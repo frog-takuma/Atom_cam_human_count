@@ -9,6 +9,14 @@ from PIL import Image
 import numpy as np
 import pandas as pd
 from openpyxl import load_workbook
+import configparser
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+config = configparser.ConfigParser()
+config.read('setting.ini')
+
+target_dir = config['setting']['TARGET_DIR ']
+save_dir = config['setting']['SAVE_DIR ']
 
 day_files = sorted(glob.glob("/media/frog-takuma/imation i9/*"))
 model = YOLO("model/yolov8x.pt") 
